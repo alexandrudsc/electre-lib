@@ -1,5 +1,5 @@
 ========================================================================
-    DYNAMIC LINK LIBRARY : electre Project Overview
+    DYNAMIC LINK LIBRARY : algoritmul electre 
 ========================================================================
 
 AppWizard has created this electre DLL for you.
