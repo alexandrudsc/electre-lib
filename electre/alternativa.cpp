@@ -2,9 +2,8 @@
 
 
 
-alternativa::alternativa(const std::string &n)
+alternativa::alternativa()
 {
-  nume = n;
 }
 
 

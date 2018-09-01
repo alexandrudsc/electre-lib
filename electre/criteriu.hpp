@@ -4,7 +4,7 @@
 class criteriu
 {
 public:
-	double pondere;
+	double coef_importanta;
 	std::string nume;
 
 	criteriu();

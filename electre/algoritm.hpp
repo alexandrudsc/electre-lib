@@ -8,42 +8,66 @@
  *  
  *
 */
-class algoritm
+namespace electre
 {
-public:
-	void initializare();
-	void adauga_criteriu(const criteriu &);
-	void adauga_alternativa(const alternativa &);
-	void ruleaza();
+    class algoritm
+	{
+	public:
+		static void initializare();
+		static void adauga_criteriu(const criteriu &);
+		static void adauga_alternativa(const alternativa &);
 
-private:
-	
-	/** Pasul 2 - normalizarea valorilor din matricea de decizie
-	 * x[i][j] = criteriu[i][j] / rad( sum (criteriu[i][j])
-	 * Pentru fiecare x[i][j] aplicam ponderea criteriului
-	 */
-	void normalizare();
+		/**
+		* Functia principala unde se executa algorimul
+		* Initializarea trebuie facuta inainte
+		*/
+		static void ruleaza();
 
-	/**
-	 * Pasul 3 calcularea matricei concordantei
-	*/
-	void concordanta();
+		static std::string afiseaza_input();
 
-	/**
-	* Pasul 4 calcularea matricei disconcordantei
-	*/
-	void discordanta();
+		static algoritm algoritm_electre;
+	private:
+		static const int MAX_ALTERNATIVE = 1000;
+		static const int MAX_CRITERII = 1000;
 
-	/**
-	* Pasul 5 surclasarea valorilor
-	*/
-	void surclasare();
+		/** 
+     * Pasul 2 - normalizarea valorilor din matricea de decizie
+		 * x[i][j] = criteriu[i][j] / rad( sum (criteriu[i][j])
+		 * Pentru fiecare x[i][j] aplicam ponderea criteriului
+		 */
+		void normalizare();
 
-	algoritm();
-	~algoritm();
+		/**
+		 * Pasul 3 calcularea matricei concordantei
+     * x[i][j] = suma coeficientilor de importanta pentru toate
+     * criteriile pentru care Varianta i are valoare mai mare ca Varianta j
+		 */
+		void concordanta();
 
-	std::vector<std::vector<double> > m_decizie;
-	std::vector<criteriu> criterii;
-	std::vector<alternativa> alternative;
-};
+		/**
+		* Pasul 4 calcularea matricei disconcordantei
+    * x[i][j] = suma diferentelor dintre valorile criteriilor variantei j si varianta i
+    * pentru care varianta j are nota mai buna decat varianta i
+		*/
+		void discordanta();
 
+		/**
+		* Pasul 5 surclasarea (clasificarea) variantelor
+    * Daca relatia de comparare: 
+    * matrice_concordanta[i][j] - matrice_discordanta[i][j] > matrice_concordanta[j][i] - matrice_discordanta[j][i] 
+    * este adevarata, atunci Varianta i este mai buna decat Varianta j
+		*/
+		void surclasare();
+
+		algoritm();
+		~algoritm();
+
+		double matrice_omogena[MAX_ALTERNATIVE][MAX_CRITERII];
+		double matrice_concordanta[MAX_ALTERNATIVE][MAX_CRITERII];
+		double matrice_discordanta[MAX_ALTERNATIVE][MAX_CRITERII];
+
+		std::vector<criteriu> criterii;
+		std::vector<alternativa> alternative;
+	};
+
+}
