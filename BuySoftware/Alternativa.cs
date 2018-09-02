@@ -24,6 +24,8 @@ namespace BuySoftware
         {
             this.nume = nume;
             this.imagine = new BitmapImage(new System.Uri(img_abs_path, UriKind.Absolute));
+            this.imagine.DecodePixelHeight = 400;
+            this.imagine.DecodePixelWidth = 400;
         }
 
         public string Nume

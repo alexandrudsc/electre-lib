@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BuySoftware"
         mc:Ignorable="d"
-        Title="MainWindow" Height="357" Width="671">
+        Title="Software"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <Storyboard x:Key="sbShowLeftMenu" >
@@ -26,8 +28,8 @@
                 </Grid>
             </Border>
             <Grid>
-                <Button Name="btnLeftMenuHide" Width="24" Height="24" Click="btnLeftMenuHide_Click" Content="&lt;" Visibility="Hidden"/>
-                <Button Name="btnLeftMenuShow" Width="24" Height="24" Click="btnLeftMenuShow_Click" Content="&gt;" Margin="0,158,22,139"/>
+                <Button Name="btnLeftMenuHide" Width="48" Height="48" Click="btnLeftMenuHide_Click" Content="&lt;" Visibility="Hidden"/>
+                <Button Name="btnLeftMenuShow" Width="48" Height="48" Click="btnLeftMenuShow_Click" Content="&gt;" Margin="0,158,22,139"/>
             </Grid>
         </StackPanel>
         <ListView x:Name="lAlternative" Margin="126,55,10,0">
@@ -39,8 +41,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
-                        <Image Source="{Binding Imagine}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock Text="{Binding Nume}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <Image Source="{Binding Imagine}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="500" Height="500"/>
+                        <TextBlock Text="{Binding Nume}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="24"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

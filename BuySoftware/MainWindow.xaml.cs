@@ -65,9 +65,14 @@ namespace BuySoftware
 
                     foreach (XmlNode xn in doc.SelectNodes("alternative/alternativa"))
                     {
-                        Alternativa a = new Alternativa(xn["nume"].InnerText);
+                        Alternativa a;
+                        if (xn["imagine"] != null)
+                            a = new Alternativa(xn["nume"].InnerText, AppDomain.CurrentDomain.BaseDirectory + "..\\..\\res\\" + xn["imagine"].InnerText);
+                        else
+                            a = new Alternativa(xn["nume"].InnerText);
+
                         foreach (Criteriu c in criterii)
-                            a.valori_criterii.Add(Double.Parse(xn[c.nume].InnerText));
+                            a.valori_criterii.Add(Double.Parse(xn[c.nume].InnerText));                            
                         alternative.Add(a);
                     }
 
@@ -127,11 +132,9 @@ namespace BuySoftware
             }
             else
             {
-                Alternativa[] copy = new Alternativa[lAlternative.Items.Count];
-                lAlternative.Items.CopyTo(copy, 0);
                 lAlternative.Items.Clear();
                 foreach (int ord in ordonate)
-                    lAlternative.Items.Add(copy[ord]);
+                    lAlternative.Items.Add(alternative[ord]);
             }
         }
 
@@ -143,6 +146,8 @@ namespace BuySoftware
             string[] etape = etape_str.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
             ElectreEtape etape_electre = new ElectreEtape();
             etape_electre.Owner = this;
+            etape_electre.WindowState = WindowState.Maximized;
+            etape_electre.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             etape_electre.Title = "Etape";
             etape_electre.ShowDialog(ref etape);
             

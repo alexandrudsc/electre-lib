@@ -5,6 +5,7 @@
   <calitate>9</calitate>
   <performanta>8</performanta>
   <grafica>10</grafica>
+  <imagine>visual-studio.png</imagine>
 </alternativa>
 
 <alternativa>
@@ -13,6 +14,7 @@
   <calitate>7</calitate>
   <performanta>8</performanta>
   <grafica>8</grafica>
+  <imagine>android-studio.png</imagine>
 </alternativa>
 
 <alternativa>
@@ -21,6 +23,7 @@
   <calitate>8</calitate>
   <performanta>6</performanta>
   <grafica>8</grafica>
+  <imagine>kdevelop.png</imagine>
 </alternativa>
 
 <alternativa>
@@ -29,6 +32,7 @@
   <calitate>6</calitate>
   <performanta>10</performanta>
   <grafica>8</grafica>
+  <imagine>qtcreator.png</imagine>
 </alternativa>
 
 </alternative>
