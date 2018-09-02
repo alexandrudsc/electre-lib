@@ -20,7 +20,7 @@ namespace BuySoftware
         public static extern void adauga_alternativa(string nume, double[] valori, int numar_criterii);
 
         [DllImport("..\\..\\..\\Debug\\electre.dll", EntryPoint = "ruleaza")]
-        public static extern void ruleaza();
+        public static extern bool ruleaza();
 
         [DllImport("..\\..\\..\\Debug\\electre.dll", EntryPoint = "afiseaza_input")]
         public static extern void afiseaza_input(StringBuilder in_params);

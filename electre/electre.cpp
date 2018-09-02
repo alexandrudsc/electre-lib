@@ -22,9 +22,9 @@ extern "C"
 	* Functia principala unde se executa algorimul
 	* Initializarea trebuie facuta inainte
 	*/
-	__declspec(dllexport) void __stdcall ruleaza()
+	__declspec(dllexport) BOOL __stdcall ruleaza()
 	{
-		electre::algoritm::ruleaza();
+		return electre::algoritm::ruleaza();
 	}
 
 	__declspec(dllexport) void __stdcall  adauga_criteriu(char *nume, double coef_importanta)

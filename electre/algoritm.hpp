@@ -21,7 +21,7 @@ namespace electre
 		* Functia principala unde se executa algorimul
 		* Initializarea trebuie facuta inainte
 		*/
-		static void ruleaza();
+		static bool ruleaza();
 
 		static std::string afiseaza_input();
 
@@ -29,6 +29,11 @@ namespace electre
 	private:
 		static const int MAX_ALTERNATIVE = 1000;
 		static const int MAX_CRITERII = 1000;
+
+    /**
+    * Pasul 1 - validare
+    */
+    bool validare();
 
 		/** 
      * Pasul 2 - normalizarea valorilor din matricea de decizie

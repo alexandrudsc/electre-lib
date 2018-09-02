@@ -1,0 +1,34 @@
+<alternative>
+<alternativa>
+  <nume>Visual Studio</nume>
+  <pret>7</pret>
+  <calitate>9</calitate>
+  <performanta>8</performanta>
+  <grafica>10</grafica>
+</alternativa>
+
+<alternativa>
+  <nume>Android Studio</nume>
+  <pret>10</pret>
+  <calitate>7</calitate>
+  <performanta>8</performanta>
+  <grafica>8</grafica>
+</alternativa>
+
+<alternativa>
+  <nume>KDevelop</nume>
+  <pret>1</pret>
+  <calitate>8</calitate>
+  <performanta>6</performanta>
+  <grafica>8</grafica>
+</alternativa>
+
+<alternativa>
+  <nume>Qt Creator</nume>
+  <pret>7</pret>
+  <calitate>6</calitate>
+  <performanta>10</performanta>
+  <grafica>8</grafica>
+</alternativa>
+
+</alternative>

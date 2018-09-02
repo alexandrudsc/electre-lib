@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <numeric>
 #include <sstream>
+#include <iostream>
 
 #include "algoritm.hpp"
 
@@ -13,8 +14,11 @@ electre::algoritm algoritm::algoritm_electre;
 // metode publice
 ///////////////////////////////////////////////////////////////////////////////
 
-void algoritm::ruleaza()
+bool algoritm::ruleaza()
 {
+  // pasul 1
+  if (!algoritm_electre.validare())
+    return false;
 	// pasul 2
 	algoritm_electre.normalizare();
 	// pasul 3
@@ -23,6 +27,7 @@ void algoritm::ruleaza()
 	algoritm_electre.discordanta();
 	// pasul 5
 	algoritm_electre.surclasare();
+  return true;
 }
 
 void algoritm::initializare()
@@ -111,6 +116,20 @@ algoritm::algoritm()
 
 algoritm::~algoritm()
 {
+}
+
+bool algoritm::validare()
+{
+  // suma coeficientilor de importanta
+  double coef_sum = std::accumulate(criterii.begin(), criterii.end(), 0.0,
+    [](double i, const criteriu &c) {return c.coef_importanta + i; }
+  );
+
+  if (abs(coef_sum - 100 ) < 0.000001)
+    return true;
+  if (abs(coef_sum - 1) < 0.000001)
+    return true;
+  return false;
 }
 
 void algoritm::normalizare()
