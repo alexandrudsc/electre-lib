@@ -21,9 +21,9 @@ namespace electre
 		* Functia principala unde se executa algorimul
 		* Initializarea trebuie facuta inainte
 		*/
-		static bool ruleaza();
+		static bool ruleaza(std::vector<int> &);
 
-		static std::string afiseaza_input();
+		static std::string afiseaza_etape();
 
 		static algoritm algoritm_electre;
 	private:

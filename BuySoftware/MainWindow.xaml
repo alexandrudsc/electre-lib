@@ -15,21 +15,22 @@
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
     </Window.Resources>
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
         <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="-150,0,0,0">
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="150" Background="#4C808080" >
                 <Grid>
                     <Button x:Name="btnCriterii" Content="Incarca criterii" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="128" Height="45" Click="btnCriterii_Click"/>
                     <Button x:Name="btnAlternative" Content="Incarca alternative" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="128" Height="45" Click="btnAlternative_Click"/>
                     <Button x:Name="btnRuleaza" Content="Ruleaza" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="128" Height="47" Click="btnRuleaza_Click"/>
+                    <Button x:Name="btnArataEtape" Content="Etape parcurse" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="128" Height="47" Click="btnArataEtape_Click"/>
                 </Grid>
             </Border>
             <Grid>
-                <Button Name="btnLeftMenuHide" Width="48" Height="48" Click="btnLeftMenuHide_Click" Content="Ascunde" Visibility="Hidden"/>
-                <Button Name="btnLeftMenuShow" Width="48" Height="48" Click="btnLeftMenuShow_Click" Content="Arata"/>
+                <Button Name="btnLeftMenuHide" Width="24" Height="24" Click="btnLeftMenuHide_Click" Content="&lt;" Visibility="Hidden"/>
+                <Button Name="btnLeftMenuShow" Width="24" Height="24" Click="btnLeftMenuShow_Click" Content="&gt;" Margin="0,158,22,139"/>
             </Grid>
         </StackPanel>
-        <ListView x:Name="lAlternative" HorizontalAlignment="Left" Margin="126,10,0,0" VerticalAlignment="Top" Width="527" Height="316">
+        <ListView x:Name="lAlternative" Margin="126,55,10,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
@@ -40,6 +41,21 @@
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
                         <Image Source="{Binding Imagine}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding Nume}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="lCriterii" Margin="126,10,10,0" Height="40" VerticalAlignment="Top">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                        <TextBlock Text="{Binding Nume}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBlock Text="{Binding Coeficient}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

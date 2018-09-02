@@ -97,9 +97,12 @@ namespace BuySoftware
                     {
                         Criteriu c = new Criteriu();
                         c.nume = xn.Name;
-                        double.TryParse(xn.InnerText, out c.valoare);
+                        double.TryParse(xn.InnerText, out c.coeficient_importanta);
                         criterii.Add(c);
                     }
+
+                    foreach (Criteriu c in criterii)
+                        lCriterii.Items.Add(c);
                 }
             }
             catch(Exception ex)
@@ -112,35 +115,37 @@ namespace BuySoftware
         {
             electre.initializare();
             foreach (Criteriu c in criterii)
-                electre.adauga_criteriu(c.nume, c.valoare);
-            //electre.adauga_criteriu("pret", 0.4);
-            //electre.adauga_criteriu("calitate", 0.3);
-            //electre.adauga_criteriu("performanta", 0.2);
-            //electre.adauga_criteriu("portabilitate", 0.1);
+                electre.adauga_criteriu(c.nume, c.coeficient_importanta);
 
             foreach (Alternativa a in alternative)
                 electre.adauga_alternativa(a.nume, a.valori_criterii.ToArray(), a.valori_criterii.Count);
 
-            //electre.adauga_alternativa("visual studio", new double[] { 7, 9, 8, 10 }, 4);
-            //electre.adauga_alternativa("android studio", new double[] { 10, 7, 8, 8 }, 4);
-            //electre.adauga_alternativa("eclipse", new double[] { 1, 8, 6, 8 }, 4);
-            //electre.adauga_alternativa("qt creator", new double[] { 7, 6, 10, 8 }, 4);
-
-
-
-            StringBuilder in_params = new StringBuilder(1000);
-            electre.afiseaza_input(in_params);
-            MessageBox.Show(in_params.ToString());
-            if (!electre.ruleaza())
+            int[] ordonate = new int[alternative.Count];
+            if (!electre.ruleaza(ordonate))
             {
-                MessageBox.Show("Erorr");
+                MessageBox.Show("Eroare");
             }
             else
             {
-                in_params = new StringBuilder(1000);
-                electre.afiseaza_input(in_params);
-                MessageBox.Show(in_params.ToString());
+                Alternativa[] copy = new Alternativa[lAlternative.Items.Count];
+                lAlternative.Items.CopyTo(copy, 0);
+                lAlternative.Items.Clear();
+                foreach (int ord in ordonate)
+                    lAlternative.Items.Add(copy[ord]);
             }
+        }
+
+        private void btnArataEtape_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder in_params = new StringBuilder(1000);
+            electre.afiseaza_etape(in_params);
+            string etape_str = in_params.ToString();
+            string[] etape = etape_str.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+            ElectreEtape etape_electre = new ElectreEtape();
+            etape_electre.Owner = this;
+            etape_electre.Title = "Etape";
+            etape_electre.ShowDialog(ref etape);
+            
         }
     }
 }

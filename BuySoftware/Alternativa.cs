@@ -17,7 +17,13 @@ namespace BuySoftware
         public Alternativa(string nume)
         {
             this.nume = nume;
-            this.imagine = new BitmapImage(new System.Uri("../../../res/unknown.png", UriKind.Relative));
+            this.imagine = new BitmapImage(new System.Uri(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\res\\unknown.png", UriKind.Absolute));
+        }
+
+        public Alternativa(string nume, string img_abs_path)
+        {
+            this.nume = nume;
+            this.imagine = new BitmapImage(new System.Uri(img_abs_path, UriKind.Absolute));
         }
 
         public string Nume

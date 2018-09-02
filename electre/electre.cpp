@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 #include "stdafx.h"
 
@@ -22,9 +23,15 @@ extern "C"
 	* Functia principala unde se executa algorimul
 	* Initializarea trebuie facuta inainte
 	*/
-	__declspec(dllexport) BOOL __stdcall ruleaza()
+	__declspec(dllexport) BOOL __stdcall ruleaza(int *ordonate)
 	{
-		return electre::algoritm::ruleaza();
+    std::vector<int> ordine;
+		const bool resultat =  electre::algoritm::ruleaza(ordine);
+    for (int i = 0; i < ordine.size(); i++)
+    {
+      ordonate[i] = ordine[i];
+    }
+    return resultat;
 	}
 
 	__declspec(dllexport) void __stdcall  adauga_criteriu(char *nume, double coef_importanta)
@@ -46,9 +53,9 @@ extern "C"
 		electre::algoritm::adauga_alternativa(a);
 	}
 
-	__declspec(dllexport) void __stdcall afiseaza_input(char *out)
+	__declspec(dllexport) void __stdcall afiseaza_etape(char *out)
 	{
-		std::string str = electre::algoritm::algoritm_electre.afiseaza_input();
+		std::string str = electre::algoritm::algoritm_electre.afiseaza_etape();
 		str.copy(out, str.length());
 	}
 

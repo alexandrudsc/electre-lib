@@ -9,6 +9,18 @@ namespace BuySoftware
     class Criteriu
     {
         public string nume = "";
-        public double valoare = 0;
+        public double coeficient_importanta = 0;
+
+        public string Nume
+        {
+            get { return this.nume; }
+            set { this.nume = value; }
+        }
+
+        public string Coeficient
+        {
+            get { return this.coeficient_importanta + ""; }
+            set { this.coeficient_importanta = Double.Parse(value); }
+        }
     }
 }

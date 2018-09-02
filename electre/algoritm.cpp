@@ -14,7 +14,7 @@ electre::algoritm algoritm::algoritm_electre;
 // metode publice
 ///////////////////////////////////////////////////////////////////////////////
 
-bool algoritm::ruleaza()
+bool algoritm::ruleaza(vector<int> &ordonate)
 {
   // pasul 1
   if (!algoritm_electre.validare())
@@ -27,6 +27,8 @@ bool algoritm::ruleaza()
 	algoritm_electre.discordanta();
 	// pasul 5
 	algoritm_electre.surclasare();
+  for (const alternativa& a : algoritm_electre.alternative)
+    ordonate.push_back(a.idx);
   return true;
 }
 
@@ -51,7 +53,7 @@ void algoritm::adauga_criteriu(const criteriu &c)
 	algoritm_electre.criterii.push_back(c);
 }
 
-std::string algoritm::afiseaza_input()
+std::string algoritm::afiseaza_etape()
 {
 	std::stringstream oss;
   int n, m;
