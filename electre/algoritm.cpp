@@ -27,6 +27,7 @@ bool algoritm::ruleaza(vector<int> &ordonate)
 	algoritm_electre.discordanta();
 	// pasul 5
 	algoritm_electre.surclasare();
+  // returnare alternative ordonate
   for (const alternativa& a : algoritm_electre.alternative)
     ordonate.push_back(a.idx);
   return true;
